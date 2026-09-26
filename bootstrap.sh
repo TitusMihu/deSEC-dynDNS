@@ -3,17 +3,15 @@
 # Bootstrap installer for desec-dyndns.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/TitusMihu/dyndns-desec/main/bootstrap.sh | sudo bash
+#   curl -fsSL https://raw.githubusercontent.com/TitusMihu/deSEC-dynDNS/main/bootstrap.sh | sudo bash
 #
 # Optional overrides:
-#   DYNDNS_REPO=https://github.com/TitusMihu/dyndns-desec.git \
-#   DYNDNS_REF=main \
-#   DYNDNS_INSTALL_DIR=/opt/dyndns-desec \
-#   curl -fsSL https://raw.githubusercontent.com/TitusMihu/dyndns-desec/main/bootstrap.sh | sudo bash
+#   curl -fsSL https://raw.githubusercontent.com/TitusMihu/deSEC-dynDNS/main/bootstrap.sh |
+#     sudo env DYNDNS_REPO=https://github.com/TitusMihu/deSEC-dynDNS.git DYNDNS_REF=main bash
 
 set -Eeuo pipefail
 
-REPO_URL="${DYNDNS_REPO:-https://github.com/TitusMihu/dyndns-desec.git}"
+REPO_URL="${DYNDNS_REPO:-https://github.com/TitusMihu/deSEC-dynDNS.git}"
 REPO_REF="${DYNDNS_REF:-main}"
 INSTALL_DIR="${DYNDNS_INSTALL_DIR:-/opt/dyndns-desec}"
 
@@ -28,10 +26,6 @@ die() {
 
 if [[ "${EUID}" -ne 0 ]]; then
     die "Run this bootstrap installer as root, e.g. with: sudo bash"
-fi
-
-if [[ "$REPO_URL" == *"TitusMihu"* ]]; then
-    die "Set DYNDNS_REPO to your actual repository URL before using this bootstrap script."
 fi
 
 if ! command -v git >/dev/null 2>&1; then

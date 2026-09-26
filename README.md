@@ -56,9 +56,8 @@ The bootstrapper installs Git if necessary, clones the repository into `/opt/dyn
 For a reproducible installation, use a release tag:
 
 ```bash
-DYNDNS_REPO=https://github.com/TitusMihu/dyndns-desec.git \
-DYNDNS_REF=v1.0.0 \
-curl -fsSL https://raw.githubusercontent.com/TitusMihu/deSEC-dynDNS/refs/heads/main/bootstrap.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/TitusMihu/deSEC-dynDNS/refs/heads/main/bootstrap.sh |
+  sudo env DYNDNS_REPO=https://github.com/TitusMihu/deSEC-dynDNS.git DYNDNS_REF=v1.0.0 bash
 ```
 
 ## deSEC token
