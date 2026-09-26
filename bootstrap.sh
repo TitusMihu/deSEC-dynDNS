@@ -62,4 +62,11 @@ fi
 chmod 0755 "$INSTALL_DIR/install.sh"
 
 log "Running installer from $INSTALL_DIR"
-exec "$INSTALL_DIR/install.sh"
+if [[ ! -r /dev/tty ]]; then
+    die "The installer is interactive and requires a terminal. Run it from a terminal session."
+fi
+
+# When this bootstrap script is piped into bash, stdin is the script itself
+# and is exhausted by the time the installer starts. Give the installer the
+# controlling terminal so its prompts can read user input.
+exec "$INSTALL_DIR/install.sh" </dev/tty
