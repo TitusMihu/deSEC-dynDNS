@@ -1,0 +1,12 @@
+# Local secrets / runtime files
+credentials
+*.secret
+*.token
+.env
+.env.*
+
+# Editor / OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

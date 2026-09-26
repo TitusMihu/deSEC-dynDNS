@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically check dynamic DNS address
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+RandomizedDelaySec=30s
+Unit=dyndns.service
+
+[Install]
+WantedBy=timers.target

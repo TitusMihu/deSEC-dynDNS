@@ -1,0 +1,20 @@
+[Unit]
+Description=Update deSEC DNS A record with current public IPv4 address
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/update-dns-apex.sh
+
+# Security hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+
+# The updater needs read access to its credentials.
+ReadOnlyPaths=/etc/dyndns/credentials
