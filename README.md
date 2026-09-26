@@ -43,6 +43,24 @@ The installer asks for:
 
 The token is never written to the repository.
 
+## One-line bootstrap installation
+
+A fresh Linux machine can bootstrap it without first cloning it manually:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/TitusMihu/dyndns-desec/main/bootstrap.sh | sudo bash
+```
+
+The bootstrapper installs Git if necessary, clones the repository into `/opt/dyndns-desec`, and runs the version-controlled `install.sh`. Existing credentials are preserved by the installer when it is re-run.
+
+For a reproducible installation, use a release tag:
+
+```bash
+DYNDNS_REPO=https://github.com/TitusMihu/dyndns-desec.git \
+DYNDNS_REF=v1.0.0 \
+curl -fsSL https://raw.githubusercontent.com/TitusMihu/dyndns-desec/main/bootstrap.sh | sudo bash
+```
+
 ## deSEC token
 
 For best security, create a dedicated deSEC token for this updater and restrict
